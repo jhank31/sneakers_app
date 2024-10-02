@@ -1,4 +1,4 @@
-import 'package:e_commers_app/common/helpers/size_screen.dart';
+import 'package:e_commers_app/common/helpers/size_screen/size_screen.dart';
 import 'package:e_commers_app/common/widgets/widgets.dart';
 import 'package:e_commers_app/presentation/auth/widgets/widgets.dart';
 import 'package:flutter/material.dart';

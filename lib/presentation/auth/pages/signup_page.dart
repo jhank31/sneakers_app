@@ -1,9 +1,10 @@
 import 'package:e_commers_app/common/widgets/widgets.dart';
 import 'package:e_commers_app/presentation/auth/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-class RegisterPage extends StatelessWidget {
-  const RegisterPage({super.key});
+class SignupPage extends StatelessWidget {
+  const SignupPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +48,9 @@ class RegisterPage extends StatelessWidget {
               height: 20,
             ),
             BasicAppButton(
-              onPressed: () {},
+              onPressed: () {
+                context.push('/gender-and-age-selection');
+              },
               title: 'Continue',
             ),
             const SizedBox(

@@ -2,3 +2,8 @@ export './title_text_auth.dart';
 export './text_field_auth.dart';
 export './create_account_text_button.dart';
 export './forgot_password_button.dart';
+export 'gender/gender_tile.dart';
+export 'gender/gender.dart';
+export 'ages/age.dart';
+export 'ages/ages_bottom_sheet.dart';
+export './ages/ages_builder.dart';

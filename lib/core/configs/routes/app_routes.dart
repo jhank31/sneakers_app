@@ -13,11 +13,15 @@ final GoRouter appRouter = GoRouter(
     ),
     GoRoute(
       path: '/register',
-      builder: (context, state) => const RegisterPage(),
+      builder: (context, state) => const SignupPage(),
     ),
     GoRoute(
       path: '/reset-password',
       builder: (context, state) => const ResetPasswordPage(),
+    ),
+    GoRoute(
+      path: '/gender-and-age-selection',
+      builder: (context, state) => const GenderAndAgeSelectionPage(),
     ),
   ],
 );
