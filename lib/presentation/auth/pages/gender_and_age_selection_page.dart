@@ -34,20 +34,18 @@ class GenderAndAgeSelectionPage extends StatelessWidget {
           BlocProvider(create: (context) => ButtonStateCubit()),
         ],
         child: BlocListener<ButtonStateCubit, ButtonState>(
-          listener: (context, state) {
+          listener: (context, state) async {
             if (state is ButtonFailureState) {
-              var snackBar = SnackBar(
-                content: Text(state.errorMessage),
-                behavior: SnackBarBehavior.floating,
-              );
               ScaffoldMessenger.of(context).showSnackBar(
-                snackBar,
+                FailureSnackbar.getSnackBar(
+                  context,
+                  state.errorMessage,
+                ),
               );
             }
             if (state is ButtonSuccessState) {
-              // var snackbar = const SnackBar(
-              //   content: Text('User created successfully'),
-              // );
+              await Future.delayed(const Duration(milliseconds: 1500));
+              // ignore: use_build_context_synchronously
               context.go('/home');
             }
           },

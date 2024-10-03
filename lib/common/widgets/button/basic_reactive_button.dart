@@ -24,6 +24,9 @@ class BasicReactiveAppButton extends StatelessWidget {
         if (state is ButtonLoadingState) {
           return _loading(context);
         }
+        if (state is ButtonSuccessState) {
+          return _succes(context);
+        }
         return _initial(context);
       },
     );
@@ -40,6 +43,20 @@ class BasicReactiveAppButton extends StatelessWidget {
             height: height ?? 50,
             child:
                 Center(child: content ?? const CircularProgressIndicator())));
+  }
+
+  Widget _succes(BuildContext context) {
+    return ElevatedButton(
+        onPressed: null,
+        style: ElevatedButton.styleFrom(
+          minimumSize:
+              Size(width ?? MediaQuery.of(context).size.width, height ?? 50),
+        ),
+        child: SizedBox(
+            height: height ?? 50,
+            child: Center(
+                child: content ??
+                    Image.asset('assets/gifs/check_animation.gif'))));
   }
 
   Widget _initial(BuildContext context) {
