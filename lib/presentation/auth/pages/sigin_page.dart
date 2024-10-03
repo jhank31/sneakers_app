@@ -4,7 +4,9 @@ import 'package:e_commers_app/presentation/auth/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class SinginPage extends StatelessWidget {
-  const SinginPage({super.key});
+  SinginPage({super.key});
+
+  final TextEditingController _email = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,10 @@ class SinginPage extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            const TextFieldAuth(hintText: 'Email Address',),
+            TextFieldAuth(
+              hintText: 'Email Address',
+              controller: _email,
+            ),
             const SizedBox(
               height: 20,
             ),

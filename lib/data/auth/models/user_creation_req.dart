@@ -3,8 +3,8 @@ class UserCreationReq {
   String? lastName;
   String? email;
   String? password;
+  String? age;
   int? gender;
-  int? age;
 
   UserCreationReq({
     required this.firstName,

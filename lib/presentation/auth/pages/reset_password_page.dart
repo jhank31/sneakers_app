@@ -3,7 +3,8 @@ import 'package:e_commers_app/presentation/auth/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class ResetPasswordPage extends StatelessWidget {
-  const ResetPasswordPage({super.key});
+  ResetPasswordPage({super.key});
+  final TextEditingController _email = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +23,9 @@ class ResetPasswordPage extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            const TextFieldAuth(
+            TextFieldAuth(
               hintText: 'Enter Email Address',
+              controller: _email,
             ),
             const SizedBox(
               height: 20,

@@ -1,3 +1,4 @@
+import 'package:e_commers_app/data/auth/models/user_creation_req.dart';
 import 'package:e_commers_app/presentation/pages.dart';
 import 'package:go_router/go_router.dart';
 
@@ -9,19 +10,24 @@ final GoRouter appRouter = GoRouter(
     ),
     GoRoute(
       path: '/signin',
-      builder: (context, state) => const SinginPage(),
+      builder: (context, state) => SinginPage(),
     ),
     GoRoute(
       path: '/register',
-      builder: (context, state) => const SignupPage(),
+      builder: (context, state) => SignupPage(),
     ),
     GoRoute(
       path: '/reset-password',
-      builder: (context, state) => const ResetPasswordPage(),
+      builder: (context, state) => ResetPasswordPage(),
     ),
     GoRoute(
       path: '/gender-and-age-selection',
-      builder: (context, state) => const GenderAndAgeSelectionPage(),
+      builder: (context, state) {
+        UserCreationReq userCreationReq = state.extra as UserCreationReq;
+        return GenderAndAgeSelectionPage(
+          userCreationReq: userCreationReq,
+        );
+      },
     ),
   ],
 );
