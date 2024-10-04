@@ -1,7 +1,6 @@
 import 'package:e_commers_app/common/bloc/button/button_state.dart';
 import 'package:e_commers_app/common/bloc/button/button_state_cubit.dart';
 import 'package:e_commers_app/common/widgets/widgets.dart';
-import 'package:e_commers_app/core/theme/app_colors.dart';
 import 'package:e_commers_app/data/auth/models/user_creation_req.dart';
 import 'package:e_commers_app/domain/auth/usecases_auth.dart';
 import 'package:e_commers_app/presentation/auth/bloc/age_selection_cubit.dart';
@@ -89,18 +88,27 @@ class GenderAndAgeSelectionPage extends StatelessWidget {
                     const Spacer(),
                     Container(
                       height: 100,
-                      color: AppColors.secondBackground,
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Center(child: Builder(builder: (context) {
                         return BasicReactiveAppButton(
                           onPressed: () {
-                            userCreationReq.age =
-                                context.read<AgeSelectionCubit>().state;
-                            userCreationReq.gender =
-                                context.read<GenderSelectionCubit>().state;
-                            context.read<ButtonStateCubit>().excecute(
-                                usecase: sl<SignupUsecase>(),
-                                params: userCreationReq);
+                            if (context.read<AgeSelectionCubit>().state !=
+                                'Age Range') {
+                              userCreationReq.age =
+                                  context.read<AgeSelectionCubit>().state;
+                              userCreationReq.gender =
+                                  context.read<GenderSelectionCubit>().state;
+                              context.read<ButtonStateCubit>().excecute(
+                                  usecase: sl<SignupUsecase>(),
+                                  params: userCreationReq);
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                FailureSnackbar.getSnackBar(
+                                  context,
+                                  'Please select an age range',
+                                ),
+                              );
+                            }
                           },
                           title: 'Finish',
                         );

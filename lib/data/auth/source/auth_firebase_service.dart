@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
-import 'package:e_commers_app/common/helpers/ages/order_ages.dart';
+import 'package:e_commers_app/common/helpers/auth/ages/order_ages.dart';
 import 'package:e_commers_app/data/auth/models/user_creation_req.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 

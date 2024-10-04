@@ -7,3 +7,4 @@ export 'gender/gender.dart';
 export 'ages/age.dart';
 export 'ages/ages_bottom_sheet.dart';
 export './ages/ages_builder.dart';
+export './pw_validator.dart';
