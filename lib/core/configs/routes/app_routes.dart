@@ -25,6 +25,10 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => ResetPasswordPage(),
     ),
     GoRoute(
+      path: '/password-reset-email',
+      builder: (context, state) => const PasswordResetEmailPage(),
+    ),
+    GoRoute(
       path: '/gender-and-age-selection',
       builder: (context, state) {
         UserCreationReq userCreationReq = state.extra as UserCreationReq;

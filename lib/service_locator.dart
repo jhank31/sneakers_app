@@ -18,5 +18,7 @@ Future<void> initializeDependencies() async {
   //? Auth Use cases
   sl.registerSingleton<SignupUsecase>(SignupUsecase());
   sl.registerSingleton<GetAgesUsecase>(GetAgesUsecase());
-
+  sl.registerSingleton<SinginUsecase>(SinginUsecase());
+  sl.registerSingleton<SendPasswordResetEmaiUsecase>(
+      SendPasswordResetEmaiUsecase());
 }

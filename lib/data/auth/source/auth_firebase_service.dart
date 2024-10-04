@@ -2,11 +2,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:e_commers_app/common/helpers/auth/ages/order_ages.dart';
 import 'package:e_commers_app/data/auth/models/user_creation_req.dart';
+import 'package:e_commers_app/data/auth/models/user_signin_req.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 abstract class AuthFirebaseService {
   Future<Either> singup(UserCreationReq user);
   Future<Either> getAges();
+  Future<Either> signin(UserSigninReq user);
+  Future<Either> sendPasswordResetEmail(String email);
 }
 
 class AuthFirebaseServiceImpl extends AuthFirebaseService {
@@ -59,6 +62,35 @@ class AuthFirebaseServiceImpl extends AuthFirebaseService {
       List<String> sortedAges = OrderAges.sortAges(ages);
 
       return Right(sortedAges);
+    } on FirebaseException catch (e) {
+      return Left(e.message);
+    } catch (e) {
+      return const Left('Please try again');
+    }
+  }
+
+  @override
+  Future<Either> signin(UserSigninReq user) async {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: user.email, password: user.password);
+
+      return const Right('User signed in successfully');
+    } on FirebaseException catch (e) {
+      String message = e.toString();
+      if (e.code == 'invalid-credential') {
+        message = 'Check your email and password.';
+      }
+
+      return Left(message);
+    }
+  }
+
+  @override
+  Future<Either> sendPasswordResetEmail(String email) async {
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+      return const Right('Email sent successfully');
     } on FirebaseException catch (e) {
       return Left(e.message);
     } catch (e) {

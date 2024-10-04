@@ -7,6 +7,7 @@ class CreateAccountTextButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Text(
           'Don\'t have an account?',

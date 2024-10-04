@@ -27,6 +27,7 @@ class TextFieldAuth extends StatelessWidget {
         if (formKey!.currentState!.validate()) {
           formKey!.currentState!.save();
         }
+        null;
       },
       decoration: InputDecoration(
         hintText: hintText,
