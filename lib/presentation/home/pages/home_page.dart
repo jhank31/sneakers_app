@@ -28,12 +28,16 @@ class HomePage extends StatelessWidget {
         ),
         child: SafeArea(
           top: true,
-          child: Padding(
-            padding: EdgeInsets.only(right: 16, left: 16),
-            child: Column(
-              children: [
-                Header(),
-              ],
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.only(right: 16, left: 16),
+              child: Column(
+                children: [
+                  Header(),
+                  SizedBox(height: 16),
+                  SearchField(),
+                ],
+              ),
             ),
           ),
         ),

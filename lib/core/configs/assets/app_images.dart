@@ -7,4 +7,6 @@ class AppImages {
   static const String closeSnackbar = '${basePath}close_snackbar.png';
   static const String bubbleCharSnackbar =
       '${basePath}bubble_chat_snackbar.png';
+  static const String profileImage =
+      '${basePath}profile.png';
 }
