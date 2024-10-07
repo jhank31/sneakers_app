@@ -21,4 +21,7 @@ Future<void> initializeDependencies() async {
   sl.registerSingleton<SinginUsecase>(SinginUsecase());
   sl.registerSingleton<SendPasswordResetEmaiUsecase>(
       SendPasswordResetEmaiUsecase());
+  sl.registerSingleton<IsLoggedInUseCase>(IsLoggedInUseCase());
+  sl.registerSingleton<LogoutUsecase>(LogoutUsecase());
+  sl.registerSingleton<GetUserUsecase>(GetUserUsecase());
 }

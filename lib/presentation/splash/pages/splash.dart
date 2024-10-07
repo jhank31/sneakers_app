@@ -16,6 +16,10 @@ class SplashPage extends StatelessWidget {
         if (state is Unauthenticated) {
           context.go('/signin');
         }
+        if (state is Authenticated) {
+          context.go('/home');
+          
+        }
       },
       child: Scaffold(
         backgroundColor: AppColors.primary,
