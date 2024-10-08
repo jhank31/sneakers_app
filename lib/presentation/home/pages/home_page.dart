@@ -1,4 +1,4 @@
-import 'package:e_commers_app/domain/auth/usecases_auth.dart';
+import 'package:e_commers_app/domain/usecases.dart';
 import 'package:e_commers_app/presentation/home/widgets/widgets.dart';
 import 'package:e_commers_app/service_locator.dart';
 import 'package:flutter/material.dart';
@@ -30,12 +30,16 @@ class HomePage extends StatelessWidget {
           top: true,
           child: SingleChildScrollView(
             child: Padding(
-              padding: EdgeInsets.only(right: 16, left: 16),
+              padding: EdgeInsets.only(right: 16, left: 16, top: 10),
               child: Column(
                 children: [
                   Header(),
                   SizedBox(height: 16),
                   SearchField(),
+                  SizedBox(height: 16),
+                  Categories(),
+                  SizedBox(height: 16),
+                  TopSellings(),
                 ],
               ),
             ),

@@ -37,5 +37,8 @@ final GoRouter appRouter = GoRouter(
         );
       },
     ),
+    GoRoute(path: '/product-detail',
+    builder: (context, state) => const ProductDetailPage(),
+    )
   ],
 );

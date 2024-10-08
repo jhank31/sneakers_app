@@ -3,7 +3,7 @@ import 'package:e_commers_app/common/bloc/button/button_state_cubit.dart';
 import 'package:e_commers_app/common/helpers/auth/auth_validations/auth_validations_text_fields.dart';
 import 'package:e_commers_app/common/helpers/size_screen/size_screen.dart';
 import 'package:e_commers_app/common/widgets/widgets.dart';
-import 'package:e_commers_app/domain/auth/usecases_auth.dart';
+import 'package:e_commers_app/domain/usecases.dart';
 import 'package:e_commers_app/presentation/auth/widgets/widgets.dart';
 import 'package:e_commers_app/service_locator.dart';
 import 'package:flutter/material.dart';

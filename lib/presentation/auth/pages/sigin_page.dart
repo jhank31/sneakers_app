@@ -4,7 +4,7 @@ import 'package:e_commers_app/common/helpers/auth/auth_validations/auth_validati
 import 'package:e_commers_app/common/helpers/size_screen/size_screen.dart';
 import 'package:e_commers_app/common/widgets/widgets.dart';
 import 'package:e_commers_app/data/auth/models/user_signin_req.dart';
-import 'package:e_commers_app/domain/auth/usecases_auth.dart';
+import 'package:e_commers_app/domain/usecases.dart';
 import 'package:e_commers_app/presentation/auth/bloc/obscure_password_cubit.dart';
 import 'package:e_commers_app/presentation/auth/widgets/widgets.dart';
 import 'package:e_commers_app/service_locator.dart';

@@ -2,7 +2,7 @@ import 'package:e_commers_app/common/bloc/button/button_state.dart';
 import 'package:e_commers_app/common/bloc/button/button_state_cubit.dart';
 import 'package:e_commers_app/common/widgets/widgets.dart';
 import 'package:e_commers_app/data/auth/models/user_creation_req.dart';
-import 'package:e_commers_app/domain/auth/usecases_auth.dart';
+import 'package:e_commers_app/domain/usecases.dart';
 import 'package:e_commers_app/presentation/auth/bloc/age_selection_cubit.dart';
 import 'package:e_commers_app/presentation/auth/bloc/ages_display_cubit.dart';
 import 'package:e_commers_app/presentation/auth/bloc/gender_selection_cubit.dart';
