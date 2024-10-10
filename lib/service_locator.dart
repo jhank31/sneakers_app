@@ -5,9 +5,9 @@ import 'package:e_commers_app/data/category/source/category_firebase_service.dar
 import 'package:e_commers_app/data/product/repository/product_repository_impl.dart';
 import 'package:e_commers_app/data/product/source/product_firebase_service.dart';
 import 'package:e_commers_app/domain/auth/repository/auth_repository.dart';
+import 'package:e_commers_app/domain/category/repository/category_repository.dart';
 import 'package:e_commers_app/domain/product/repository/product_repository.dart';
 import 'package:e_commers_app/domain/usecases.dart';
-import 'package:e_commers_app/domain/category/repository/category_repository.dart';
 import 'package:get_it/get_it.dart';
 
 final sl = GetIt.instance;
@@ -43,5 +43,6 @@ Future<void> initializeDependencies() async {
   sl.registerSingleton<GetCategoriesUsecase>(GetCategoriesUsecase());
 
   //? Product Use cases
-  sl.registerSingleton<GetTopSellings>(GetTopSellings());
+  sl.registerSingleton<GetTopSellingsUsecase>(GetTopSellingsUsecase());
+  sl.registerSingleton<GetNewInUsecase>(GetNewInUsecase());
 }

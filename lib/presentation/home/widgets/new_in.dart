@@ -1,26 +1,29 @@
+import 'package:e_commers_app/presentation/home/bloc/new_products/new_product_display_cubit.dart';
+import 'package:e_commers_app/presentation/home/bloc/new_products/new_product_display_state.dart';
 import 'package:e_commers_app/common/widgets/widgets.dart';
+import 'package:e_commers_app/core/theme/app_colors.dart';
 import 'package:e_commers_app/domain/product/entities/product_entity.dart';
-import 'package:e_commers_app/presentation/home/bloc/top_sellings/top_selling_product_display_cubit.dart';
-import 'package:e_commers_app/presentation/home/bloc/top_sellings/top_selling_product_display_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class TopSellings extends StatelessWidget {
-  const TopSellings({super.key});
+class NewIn extends StatelessWidget {
+  const NewIn({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TopSellingProductDisplayCubit,
-        TopSellingProductDisplayState>(
+    return BlocBuilder<NewProductDisplayCubit, NewProductDisplayState>(
       builder: (context, state) {
-        if (state is TopSellingProductLoaded) {
-          final List<ProductEntity> products = state.topSellings;
+        if (state is NewProductLoaded) {
+          final List<ProductEntity> products = state.newProducts;
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                'Top Selling',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                'New in',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                    color: AppColors.primary),
               ),
               const SizedBox(
                 height: 16,
@@ -42,9 +45,9 @@ class TopSellings extends StatelessWidget {
               )
             ],
           );
-        } else if (state is LoadTopSellingProductsFailure) {
+        } else if (state is LoadProductsFailure) {
           return const Center(
-              child: Text('Ups we have an error getting the top sellings'));
+              child: Text('Ups we have an error getting the new products'));
         } else {
           return const SizedBox.shrink();
         }

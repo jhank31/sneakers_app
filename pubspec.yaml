@@ -9,6 +9,7 @@ environment:
   sdk: ">=3.4.4 <4.0.0"
 
 dependencies:
+  bloc: ^8.1.4
   cloud_firestore: ^5.4.4
   cupertino_icons: ^1.0.6
   dartz: ^0.10.1
@@ -21,6 +22,7 @@ dependencies:
   flutter_svg: ^2.0.10+1
   get_it: ^8.0.0
   go_router: ^14.2.8
+  meta: ^1.15.0
 
 dev_dependencies:
   flutter_lints: ^3.0.0

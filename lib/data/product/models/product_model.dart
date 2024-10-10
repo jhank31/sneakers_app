@@ -30,7 +30,7 @@ class ProductModel {
       required this.title});
 
   factory ProductModel.fromJson(Map<String, dynamic> map) {
-    return ProductModel(
+    return ProductModel(                            
       categoryId: map['categoryId'] as String,
       colors: List<ProductColorModel>.from(
           map['colors'].map((e) => ProductColorModel.fromJson(e))),

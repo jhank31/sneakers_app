@@ -10,75 +10,71 @@ class Categories extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => CategoriesDisplayCubit()..displayCategories(),
-      child: BlocBuilder<CategoriesDisplayCubit, CategoriesDisplayState>(
-        builder: (context, state) {
-          if (state is CategoriesDisplayLoaded) {
-            List<CategoryEntity> categories = state.categories;
-            return Column(
-              children: [
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text('Categories',
-                          style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.bold)),
-                      Spacer(),
-                      Text('See all', style: TextStyle(fontSize: 16)),
-                    ],
-                  ),
+    return BlocBuilder<CategoriesDisplayCubit, CategoriesDisplayState>(
+      builder: (context, state) {
+        if (state is CategoriesDisplayLoaded) {
+          List<CategoryEntity> categories = state.categories;
+          return Column(
+            children: [
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text('Categories',
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold)),
+                    Spacer(),
+                    Text('See all', style: TextStyle(fontSize: 16)),
+                  ],
                 ),
-                const SizedBox(height: 20),
-                SizedBox(
-                  height: 100,
-                  child: ListView.separated(
-                      physics: const BouncingScrollPhysics(),
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (contetx, index) {
-                        return Column(
-                          children: [
-                            Container(
-                              height: 60,
-                              width: 60,
-                              decoration:  BoxDecoration(
+              ),
+              const SizedBox(height: 20),
+              SizedBox(
+                height: 100,
+                child: ListView.separated(
+                    physics: const BouncingScrollPhysics(),
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (contetx, index) {
+                      return Column(
+                        children: [
+                          Container(
+                            height: 60,
+                            width: 60,
+                            decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 color: Colors.white,
                                 image: DecorationImage(
-                                  fit: BoxFit.fill,
-                                  image: NetworkImage(
-                                    ImagesDisplayHelper.generateCategoryImageURL(categories[index].image),
-                                  )
-                                )
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              categories[index].title,
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.w400, fontSize: 14),
-                            )
-                          ],
-                        );
-                      },
-                      separatorBuilder: (context, index) =>
-                          const SizedBox(width: 15),
-                      itemCount: 5),
-                )
-              ],
-            );
-          }
-          if (state is CategoriesDisplayLoading) {
-            return const Center(child: CircularProgressIndicator());
-          } else {
-            return const SizedBox();
-          }
-        },
-      ),
+                                    fit: BoxFit.fill,
+                                    image: NetworkImage(
+                                      ImagesDisplayHelper
+                                          .generateCategoryImageURL(
+                                              categories[index].image),
+                                    ))),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            categories[index].title,
+                            style: const TextStyle(
+                                fontWeight: FontWeight.w400, fontSize: 14),
+                          )
+                        ],
+                      );
+                    },
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(width: 15),
+                    itemCount: 5),
+              )
+            ],
+          );
+        } else if (state is LoadCategoryFailure) {
+          return const Text('Ups we have an error getting the categories');
+        } else {
+          return const SizedBox.shrink();
+        }
+      },
     );
   }
 }

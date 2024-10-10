@@ -17,4 +17,17 @@ class ProductRepositoryImpl extends ProductRepository {
       },
     );
   }
+
+  @override
+  Future<Either> getNewIn() async {
+    var products = await sl<ProductFirebaseService>().getNewIn();
+    return products.fold(
+      (error) => Left(error),
+      (data) {
+        return Right(List.from(data)
+            .map((e) => ProductModel.fromJson(e).toEntity())
+            .toList());
+      },
+    );
+  }
 }

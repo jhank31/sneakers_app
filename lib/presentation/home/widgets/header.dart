@@ -1,8 +1,8 @@
 import 'package:e_commers_app/core/configs/assets/app_images.dart';
 import 'package:e_commers_app/core/theme/app_colors.dart';
 import 'package:e_commers_app/domain/auth/entities/user_entity.dart';
-import 'package:e_commers_app/presentation/home/bloc/user_info_display_cubit.dart';
-import 'package:e_commers_app/presentation/home/bloc/user_info_display_state.dart';
+import 'package:e_commers_app/presentation/home/bloc/user_info/user_info_display_cubit.dart';
+import 'package:e_commers_app/presentation/home/bloc/user_info/user_info_display_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -11,37 +11,36 @@ class Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => UserInfoDisplayCubit()..displayUserInfo(),
-      child: BlocBuilder<UserInfoDisplayCubit, UserInfoDisplayState>(
-        builder: (context, state) {
-          if (state is UserInfoLoading) {
-            return const Center(child: CircularProgressIndicator());
-          }
-          if (state is UserInfoLoaded) {
-            return Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                ImageProfile(
-                  userEntity: state.userEntity,
+    return BlocBuilder<UserInfoDisplayCubit, UserInfoDisplayState>(
+      builder: (context, state) {
+        if (state is UserInfoLoaded) {
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              ImageProfile(
+                userEntity: state.userEntity,
+              ),
+              Gender(
+                userEntity: state.userEntity,
+              ),
+              Container(
+                height: 40,
+                width: 40,
+                decoration: const BoxDecoration(
+                  color: AppColors.primary,
+                  shape: BoxShape.circle,
                 ),
-                Gender(
-                  userEntity: state.userEntity,
-                ),
-                Container(
-                  height: 40,
-                  width: 40,
-                  decoration: const BoxDecoration(
-                    color: AppColors.primary,
-                    shape: BoxShape.circle,
-                  ),
-                ),
-              ],
-            );
-          }
+              ),
+            ],
+          );
+        } else if (state is LoadUserInfoFailure) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        } else {
           return const SizedBox();
-        },
-      ),
+        }
+      },
     );
   }
 }

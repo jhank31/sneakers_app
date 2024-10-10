@@ -9,3 +9,4 @@ export 'auth/usecases/get_user_usecase.dart';
 export './category/usecases/get_categories_usecase.dart';
 
 export './product/usecases/get_top_sellings.dart';
+export './product/usecases/get_new_in.dart';

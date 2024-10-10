@@ -3,9 +3,9 @@ import 'package:e_commers_app/core/usecase.dart/usecase.dart';
 import 'package:e_commers_app/domain/product/repository/product_repository.dart';
 import 'package:e_commers_app/service_locator.dart';
 
-class GetTopSellingsUsecase implements UseCase<Either, Null> {
+class GetNewInUsecase implements UseCase<Either, Null> {
   @override
   Future<Either> call({Null params}) async {
-    return await sl<ProductRepository>().getTopSelling();
+    return await sl<ProductRepository>().getNewIn();
   }
 }
